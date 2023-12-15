@@ -1,4 +1,3 @@
-
 # Rust Geo API Webserver
 
 Self-contained System for Geolocation API calls.
@@ -7,19 +6,18 @@ The Geo-Providers can be configured via web ui, including monthly payload limits
 
 ## Status
 
-
 ![under under_construction](https://img.shields.io/badge/Status-under_construction-yellow)
+
 ## API Reference
 
 ### Landing Page
 
 loads the landing page with some explanations
 
-```/```
+`/`
 
-**Returns:** 
+**Returns:**
 HTML page
-
 
 #### Get all providers
 
@@ -29,11 +27,11 @@ list all providers from database
   GET /providers
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `none` | `-/-` | list all configured providers |
+| Parameter | Type  | Description                   |
+| :-------- | :---- | :---------------------------- |
+| `none`    | `-/-` | list all configured providers |
 
-**Returns:** 
+**Returns:**
 JSON array
 
 #### Get provider
@@ -42,11 +40,11 @@ JSON array
   GET /provider/${id}
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
+| Parameter | Type     | Description                           |
+| :-------- | :------- | :------------------------------------ |
 | `id`      | `string` | **Required**. Id of provider to fetch |
 
-**Returns:** 
+**Returns:**
 JSON
 
 #### create provider
@@ -57,30 +55,24 @@ Create (add) a new provider to the database
   POST /create/${JSON data}
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `name`      | `string` | **Required**. name of provider |
-| `description`      | `string` | **Required**. short description of provider |
-| `api_key`      | `string` | **Required**. API key |
-| `counter_limit`      | `string` | **Required**. payload limit per month |
-| `counter`      | `string` | **Required**. initial payload (eg. 0) |
+| Parameter       | Type     | Description                                 |
+| :-------------- | :------- | :------------------------------------------ |
+| `name`          | `string` | **Required**. name of provider              |
+| `description`   | `string` | **Required**. short description of provider |
+| `api_key`       | `string` | **Required**. API key                       |
+| `counter_limit` | `string` | **Required**. payload limit per month       |
+| `counter`       | `string` | **Required**. initial payload (eg. 0)       |
 
 ## Authors
 
 - [@Zheng-Bote](https://www.github.com/zheng-bote)
 
-
 ## License
-
-Add badges from somewhere like: [shields.io](https://shields.io/)
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file
+To run this project, you will need to add the following environment variables to your .env file (see example: env_prod)
 
 `DATABASE_URL="sqlite://data.db"`
-
-
-
