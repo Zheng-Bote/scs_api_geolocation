@@ -1,12 +1,54 @@
+<div id="top"></div>
+<br />
+<div align="center">
+
 # Rust Geo API Webserver
 
 Self-contained System for Geolocation API calls.
 
 The Geo-Providers can be configured via web ui, including monthly payload limits.
 
+</div>
+
 ## Status
 
 ![under under_construction](https://img.shields.io/badge/Status-under_construction-yellow)
+**Still under heavy construction**
+
+![deprecated](https://img.shields.io/badge/Info-limited_functionality-yellow)
+**This application will be just rudimentary and mostly to learn Rust and the Rocket framework.**
+
+## Features
+
+- [x] Rust programming language with Rocket webframework
+
+- [x] Diesel ORM and SQLx toolkit
+
+- [x] Self-contained System with Web-based Userinterface
+
+- [x] support for several Geolocation providers
+
+- [x] each registered GEO provider with own configureable monthly payload limits
+
+- [x] configuration based on SQLite3 database
+
+- [x] template-based UI with Handlebars, JS and CSS support
+
+- [ ] scaleable, clean architecture
+
+- [ ] ReSTfull
+
+- [ ] Secured (XSS, ...)
+
+- [ ] User authentication, rights and roles
+
+- [ ] tbd.
+
+## HISTORY:
+
+> | Version | Date       | Developer | Comments |
+> | ------- | ---------- | --------- | -------- |
+> | 0.1.0   | 2023-12-16 | RZheng    | created  |
 
 ## API Reference
 
@@ -76,3 +118,9 @@ Create (add) a new provider to the database
 To run this project, you will need to add the following environment variables to your .env file (see example: env_prod)
 
 `DATABASE_URL="sqlite://data.db"`
+
+### the end
+
+:vulcan_salute:
+
+<p align="right">(<a href="#top">back to top</a>)</p>
