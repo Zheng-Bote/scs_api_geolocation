@@ -1,0 +1,59 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="ZHENG Robert" />
+    <style>
+      {{css}}
+    </style>
+
+    <link href="/css/index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body id="body">
+
+        <header>
+      <div id="brand">
+        <a href="/" alt="Home" title="Home">GEO</a>
+      </div>
+      <nav>
+        <ul>
+          <!-- <li><a href="/" alt="Home" title="Home"><img src="Img/home-outline.svg" width="15px" alt="Home" title="Home"></a></li> -->
+          <li>
+            <a href="./architecture.html" alt="Architecture" title="Architecture">list all</a>
+          </li>
+          <li>
+            <a href="./sbom.html" alt="SBOM" title="Software Bill of Material">create</a>
+          </li>
+          
+          <li>
+            <a href="account/login" alt="login" title="login">login</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+<main>
+  <article>
+    <h1>Test</h1>
+    <p>{{field}}</p>
+
+    <h2>functions</h2>
+    <a href="providers" alt="all providers">all Providers: /providers</a>
+    <br />
+    <a href="provider/1" alt="provider">Provider: /provider/&lt;id&gt;</a>
+
+    <hr />
+    {{{html}}}
+  </article>
+  
+    <script>
+      {{{js}}}
+    </script>
+
+</main>
+  
+  <footer class="center" id="footer"></footer>
+</div>  
+<p><button id="btn_top_new">&uArr;&nbsp;top</button></p>
+  </body>
+</html>

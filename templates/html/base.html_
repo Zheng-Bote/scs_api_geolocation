@@ -1,0 +1,17 @@
+<content>
+  <h2>Base</h2>
+<p>das ist base</p>
+  <hr />
+  INDEX_HTML
+</content>
+
+
+<styley>
+{{BASE_CSS}}
+</style>
+
+<script>
+ {{BASE_JS}}
+  INDEX_JS
+</script>
+
