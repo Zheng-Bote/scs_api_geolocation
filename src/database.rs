@@ -12,14 +12,14 @@ pub async fn create_geo_provider(
     name: &String,
     description: &String,
     api_key: &String,
-    counter_limit: &i64,
-    counter: &i64,
+    counter_limit: &String,
+    counter: &String,
 ) -> DBResult<i64> {
     let mut connection = pool.acquire().await?;
     let id = sqlx::query_as!(
             GeoProvider,
             r#"
-        INSERT INTO geo_provider (name, description, api_key, counter_limit, counter) VALUES (?, ?, ?, ?, ?);
+        INSERT INTO geo_provider (name, description, api_key, counter_limit, counter,date_time) VALUES (?, ?, ?, ?, ?, strftime('%s','now'));
         "#,
             name,
             description,
@@ -38,7 +38,7 @@ pub async fn get_geo_provider(pool: &Pool<Sqlite>, id: i64) -> DBResult<GeoProvi
     let task = sqlx::query_as!(
         GeoProvider,
         r#"
-        SELECT id, name, description, api_key, counter_limit, counter from geo_provider
+        SELECT id, name, description, api_key, counter_limit, counter, date_time from geo_provider
         WHERE id = ?;
         "#,
         id,
@@ -52,7 +52,7 @@ pub async fn get_geo_providers(pool: &Pool<Sqlite>) -> DBResult<Vec<GeoProvider>
     let mut connection = pool.acquire().await.unwrap();
     let tasks = sqlx::query_as::<_, GeoProvider>(
         r#"
-        select id, name, description, api_key, counter_limit, counter from geo_provider;
+        select id, name, description, api_key, counter_limit, counter,date_time from geo_provider;
         "#,
     )
     .fetch_all(&mut connection)

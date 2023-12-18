@@ -12,6 +12,6 @@
 
 <script>
  {{BASE_JS}}
-  INDEX_JS
+
 </script>
 

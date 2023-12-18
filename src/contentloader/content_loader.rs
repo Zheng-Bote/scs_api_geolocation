@@ -21,9 +21,15 @@ pub fn add_component(component_tag: String, html_data: String) -> String {
     let js_path =
         String::from("./templates/js/") + &component_tag.to_lowercase() + &String::from(".js");
     let js_loaded = read_file(&js_path);
+    /*
+        let html_data = html_data.replace(html_tag.as_str(), &html_loaded);
+        let html_data = html_data.replace(css_tag.as_str(), &css_loaded);
+        let html_data = html_data.replace(js_tag.as_str(), &js_loaded);
+    */
 
-    let html_data = html_data.replace(html_tag.as_str(), &html_loaded);
-    let html_data = html_data.replace(css_tag.as_str(), &css_loaded);
-    let html_data = html_data.replace(js_tag.as_str(), &js_loaded);
+    let html_data = html_data.replace("{{{HTML}}}", &html_loaded);
+    let html_data = html_data.replace("{{{CSS}}}", &css_loaded);
+    let html_data = html_data.replace("{{{JS}}}", &js_loaded);
+
     return html_data;
 }

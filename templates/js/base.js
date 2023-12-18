@@ -36,12 +36,12 @@ const callback = (entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       // 'entry.target' is the DOM element
-      console.log(`${entry.target.id} is visible.`);
+      //console.log(`${entry.target.id} is visible.`);
 
       //const intersecting = entry.isIntersecting;
       //entry.target.style.backgroundColor = intersecting ? "blue" : "orange";
     } else {
-      console.log(`${entry.target.id} is not visible.`);
+      //console.log(`${entry.target.id} is not visible.`);
     }
     if (entry.target.id === "body") {
       const intersecting = entry.isIntersecting;

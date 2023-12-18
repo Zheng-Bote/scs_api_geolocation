@@ -23,6 +23,15 @@ use rocket::{Request, Response};
 
 use sqlx::{Pool, Sqlite, SqlitePool};
 
+#[get("/create")]
+async fn frm_create() -> Template {
+    let html_data: [String; 3] = get_filecontent2(String::from("create")).await;
+    Template::render(
+        "html/index",
+        context! {field:"Hello", css:html_data[1].to_owned(), html:html_data[0].to_owned(), js:html_data[2].to_owned()},
+    )
+}
+
 #[post("/create", format = "json", data = "<GeoProvider>")]
 async fn create(
     GeoProvider: Json<GeoRequest>,
@@ -111,7 +120,10 @@ async fn main() -> Result<(), rocket::Error> {
         .expect("Couldn't migrate the database tables");
 
     let _rocket = rocket::build()
-        .mount("/", routes![index, getall, create, detail, get_css, get_js])
+        .mount(
+            "/",
+            routes![index, getall, frm_create, create, detail, get_css, get_js],
+        )
         .attach(Template::fairing())
         .attach(CORS)
         .manage(CORS)

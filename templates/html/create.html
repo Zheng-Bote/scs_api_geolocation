@@ -1,0 +1,58 @@
+<section class="index">
+  <h2>Create GEO-Provider</h2>
+  <p>das ist create inhalt</p>
+  <div id="msgbox" class="msgbox"></div>
+
+  <form id="frm_add_provider" class="wrapper">
+    <div class="box">
+      <label for="name">Name:</label>
+    </div>
+    <div class="box">
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        min="5"
+        autocomplete="on"
+      />
+    </div>
+
+    <div class="box">
+      <label for="description">Description:</label>
+    </div>
+    <div class="box">
+      <input type="text" id="description" name="description" required min="5" />
+    </div>
+
+    <div class="box">
+      <label for="api_key">API key:</label>
+    </div>
+    <div class="box">
+      <input type="text" id="api_key" name="api_key" required min="5" />
+    </div>
+
+    <div class="box">
+      <label for="counter_limit">monthly Payload limit (0 = no limit):</label>
+    </div>
+    <div class="box">
+      <input
+        type="number"
+        id="counter_limit"
+        name="counter_limit"
+        required
+        min="0"
+      />
+    </div>
+
+    <div class="box">
+      <label for="active">active:</label>
+    </div>
+    <div class="box">
+      <input type="checkbox" id="active" name="active" disabled />
+    </div>
+    <button id="btn_add_provider">Submit</button>
+  </form>
+
+  <script></script>
+</section>
