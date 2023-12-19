@@ -131,7 +131,8 @@ Manage the SQLite3 database with Diesel:
 
 define **up.sql**
 
-`CREATE TABLE IF NOT EXISTS geo_provider
+```
+CREATE TABLE IF NOT EXISTS geo_provider
 (
     id INTEGER PRIMARY KEY NOT NULL,
     name TEXT NOT NULL UNIQUE,
@@ -141,7 +142,7 @@ define **up.sql**
     counter TEXT NOT NULL,
     date_time integer not NULL
 );
-`
+```
 
 define **down.sql**
 
@@ -153,21 +154,20 @@ create **database**
 
 ### build release
 
-`cargo build --release``
+`cargo build --release`
 
 ## Security
 
 the following CORS are defined (in main.rs):
 
-`
+```
 response.set*header(Header::new("Access-Control-Allow-Origin", "*"));
 response.set*header(Header::new("Access-Control-Allow-Methods", "POST, GET, PATCH, OPTIONS", ));
 response.set_header(Header::new("Access-Control-Allow-Headers", "*"));
 response.set_header(Header::new("Access-Control-Allow-Credentials", "true"));
 
         response.set_header(Header::new("Strict-Transport-Security", "max-age=63072000"));
-
-`
+```
 
 **please be aware of "Strict-Transport-Security"**
 
