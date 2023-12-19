@@ -7,7 +7,7 @@ use database::responses::GeoProvider;
 use database::{create_geo_provider, get_geo_provider, get_geo_providers, DBResult};
 
 mod contentloader;
-use contentloader::{get_filecontent, get_filecontent2};
+use contentloader::get_filecontent3;
 
 use rocket::fs::NamedFile;
 use rocket::serde::json::Json;
@@ -25,10 +25,10 @@ use sqlx::{Pool, Sqlite, SqlitePool};
 
 #[get("/create")]
 async fn frm_create() -> Template {
-    let html_data: [String; 3] = get_filecontent2(String::from("create")).await;
+    let html_data: String = get_filecontent3(String::from("create")).await;
     Template::render(
         "html/index",
-        context! {field:"Hello", css:html_data[1].to_owned(), html:html_data[0].to_owned(), js:html_data[2].to_owned()},
+        context! {css:"create", js:"create", html:html_data.to_owned()},
     )
 }
 
@@ -50,6 +50,14 @@ async fn create(
     Ok(Json(task))
 }
 
+#[get("/list_providers")]
+async fn list_providers() -> Template {
+    let html_data: String = get_filecontent3(String::from("list_providers")).await;
+    Template::render(
+        "html/index",
+        context! {css:"list_providers", js:"list_providers", html:html_data.to_owned()},
+    )
+}
 #[get("/providers")]
 async fn getall(pool: &State<Pool<Sqlite>>) -> DBResult<Json<Vec<GeoProvider>>> {
     let tasks = get_geo_providers(pool).await?;
@@ -78,10 +86,10 @@ async fn get_js(file: PathBuf) -> Option<NamedFile> {
 #[get("/")]
 async fn index() -> Template {
     //let html_data: String = get_filecontent(String::from("index")).await;
-    let html_data: [String; 3] = get_filecontent2(String::from("index")).await;
+    let html_data: String = get_filecontent3(String::from("index")).await;
     Template::render(
         "html/index",
-        context! {field:"Hello", css:html_data[1].to_owned(), html:html_data[0].to_owned(), js:html_data[2].to_owned()},
+        context! {css:"index", js:"index", html:html_data.to_owned()},
     )
 }
 
@@ -105,6 +113,8 @@ impl Fairing for CORS {
         ));
         response.set_header(Header::new("Access-Control-Allow-Headers", "*"));
         response.set_header(Header::new("Access-Control-Allow-Credentials", "true"));
+
+        response.set_header(Header::new("Strict-Transport-Security", "max-age=63072000"));
     }
 }
 
@@ -122,7 +132,16 @@ async fn main() -> Result<(), rocket::Error> {
     let _rocket = rocket::build()
         .mount(
             "/",
-            routes![index, getall, frm_create, create, detail, get_css, get_js],
+            routes![
+                index,
+                list_providers,
+                getall,
+                frm_create,
+                create,
+                detail,
+                get_css,
+                get_js
+            ],
         )
         .attach(Template::fairing())
         .attach(CORS)

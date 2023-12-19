@@ -1,0 +1,31 @@
+details {
+  padding-top: 10px;
+}
+details > summary {
+  padding: 4px;
+  width: 200px;
+  background-color: #eeeeee;
+  border: none;
+  box-shadow: 1px 1px 2px #bbbbbb;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: hsla(0, 0%, 0%, 0.5);
+}
+details > p {
+  background-color: #eeeeee;
+  padding: 10px 10px 10px 20px;
+  margin: 0;
+  box-shadow: 1px 1px 2px #bbbbbb;
+}
+
+table,
+tr,
+td {
+  border: none;
+  padding: 5px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 2px;
+}

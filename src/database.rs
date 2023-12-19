@@ -52,7 +52,7 @@ pub async fn get_geo_providers(pool: &Pool<Sqlite>) -> DBResult<Vec<GeoProvider>
     let mut connection = pool.acquire().await.unwrap();
     let tasks = sqlx::query_as::<_, GeoProvider>(
         r#"
-        select id, name, description, api_key, counter_limit, counter,date_time from geo_provider;
+        select id, name, description, api_key, counter_limit, counter,date_time from geo_provider ORDER BY NAME ASC;
         "#,
     )
     .fetch_all(&mut connection)

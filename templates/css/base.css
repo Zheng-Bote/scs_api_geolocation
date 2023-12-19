@@ -154,35 +154,3 @@ footer {
 .red {
   background-color: red;
 }
-
-form {
-  border: 1px solid hsla(0, 3%, 78%, 0.5);
-  border-radius: 5px;
-  padding: 10px;
-}
-label {
-  font-size: 0.8rem;
-}
-input {
-  width: 100%;
-  border: none;
-  padding: 3px;
-}
-
-/* ##### FORM ##### */
-
-.wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-}
-
-.box {
-  color: hsla(0, 0%, 0%, 0.5);
-  border: 1px solid hsla(0, 3%, 78%, 0.5);
-  border-radius: 5px;
-  padding: 5px;
-
-  display: flex;
-  align-items: center;
-}

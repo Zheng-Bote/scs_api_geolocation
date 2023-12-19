@@ -37,7 +37,6 @@ const callback = (entries) => {
     if (entry.isIntersecting) {
       // 'entry.target' is the DOM element
       //console.log(`${entry.target.id} is visible.`);
-
       //const intersecting = entry.isIntersecting;
       //entry.target.style.backgroundColor = intersecting ? "blue" : "orange";
     } else {

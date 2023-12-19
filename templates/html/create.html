@@ -1,58 +1,95 @@
-<section class="index">
+<article class="index">
   <h2>Create GEO-Provider</h2>
-  <p>das ist create inhalt</p>
+  <p>add new Geolocation provider</p>
   <div id="msgbox" class="msgbox"></div>
 
-  <form id="frm_add_provider" class="wrapper">
-    <div class="box">
-      <label for="name">Name:</label>
-    </div>
-    <div class="box">
-      <input
-        type="text"
-        id="name"
-        name="name"
-        required
-        min="5"
-        autocomplete="on"
-      />
-    </div>
+  <div class="center">
+    <form id="frm_add_provider" class="wrapper">
+      <div class="box">
+        <label for="name">Name:</label>
+      </div>
+      <div class="box">
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          min="5"
+          autocomplete="on"
+        />
+      </div>
 
-    <div class="box">
-      <label for="description">Description:</label>
-    </div>
-    <div class="box">
-      <input type="text" id="description" name="description" required min="5" />
-    </div>
+      <div class="box">
+        <label for="description">Description:</label>
+      </div>
+      <div class="box">
+        <input
+          type="text"
+          id="description"
+          name="description"
+          required
+          min="5"
+          maxlength="100"
+        />
+      </div>
 
-    <div class="box">
-      <label for="api_key">API key:</label>
-    </div>
-    <div class="box">
-      <input type="text" id="api_key" name="api_key" required min="5" />
-    </div>
+      <div class="box">
+        <label for="api_key">API key:</label>
+      </div>
+      <div class="box">
+        <input type="text" id="api_key" name="api_key" required min="5" />
+      </div>
 
-    <div class="box">
-      <label for="counter_limit">monthly Payload limit (0 = no limit):</label>
-    </div>
-    <div class="box">
-      <input
-        type="number"
-        id="counter_limit"
-        name="counter_limit"
-        required
-        min="0"
-      />
-    </div>
+      <div class="box">
+        <label for="counter_limit">monthly Payload limit (0 = no limit):</label>
+      </div>
+      <div class="box">
+        <input
+          type="number"
+          id="counter_limit"
+          name="counter_limit"
+          required
+          min="0"
+        />
+      </div>
 
-    <div class="box">
-      <label for="active">active:</label>
-    </div>
-    <div class="box">
-      <input type="checkbox" id="active" name="active" disabled />
-    </div>
-    <button id="btn_add_provider">Submit</button>
-  </form>
+      <div class="box">
+        <label for="active">active:</label>
+      </div>
+      <div class="box">
+        <input type="checkbox" id="active" name="active" disabled />
+      </div>
+      <button id="btn_add_provider">Submit</button>
+    </form>
+  </div>
 
-  <script></script>
-</section>
+  <script>
+    document.getElementById("msgbox").style.display = "none";
+
+    const form = document.getElementById("frm_add_provider");
+    form.addEventListener("submit", function (event) {
+      // First, prevent the default form submission behavior
+      event.preventDefault();
+
+      document.getElementById("msgbox").style.display = "none";
+
+      // Collect the form data
+      let name = document.getElementById("name");
+      let description = document.getElementById("description");
+      let api_key = document.getElementById("api_key");
+      let counter_limit = document.getElementById("counter_limit");
+      const obj = {
+        name: name.value,
+        description: description.value,
+        api_key: api_key.value,
+        counter_limit: counter_limit.value,
+        counter: "0",
+        date_time: 0,
+      };
+
+      const myJSON = JSON.stringify(obj);
+
+      send_frm_add_provider(myJSON);
+    });
+  </script>
+</article>
