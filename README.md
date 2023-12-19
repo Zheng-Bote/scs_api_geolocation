@@ -166,7 +166,7 @@ response.set*header(Header::new("Access-Control-Allow-Methods", "POST, GET, PATC
 response.set_header(Header::new("Access-Control-Allow-Headers", "*"));
 response.set_header(Header::new("Access-Control-Allow-Credentials", "true"));
 
-        response.set_header(Header::new("Strict-Transport-Security", "max-age=63072000"));
+response.set_header(Header::new("Strict-Transport-Security", "max-age=63072000"));
 ```
 
 **please be aware of "Strict-Transport-Security"**
