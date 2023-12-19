@@ -38,7 +38,7 @@ The Geo-Providers can be configured via web ui, including monthly payload limits
 
 - [ ] ReSTfull
 
-- [ ] Secured (XSS, ...)
+- [x] Secured (XSS, ...)
 
 - [ ] User authentication, rights and roles
 
@@ -118,6 +118,20 @@ Create (add) a new provider to the database
 To run this project, you will need to add the following environment variables to your .env file (see example: env_prod)
 
 `DATABASE_URL="sqlite://data.db"`
+
+## Screenshots
+
+**Startpage**
+
+  <img src="https://raw.githubusercontent.com/Zheng-Bote/scs_api_geolocation/main/docs/index_hbs-index_html.png"  width="100%" height="auto" />
+
+**create / add provider**
+
+  <img src="https://raw.githubusercontent.com/Zheng-Bote/scs_api_geolocation/main/docs/add_provider.png"  width="100%" height="auto" />
+
+**list all registered providers**
+
+  <img src="https://raw.githubusercontent.com/Zheng-Bote/scs_api_geolocation/main/docs/listall_providers.png"  width="100%" height="auto" />
 
 ### the end
 
