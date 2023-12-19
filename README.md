@@ -113,11 +113,63 @@ Create (add) a new provider to the database
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-## Environment Variables
+## Setup
+
+### Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file (see example: env_prod)
 
 `DATABASE_URL="sqlite://data.db"`
+
+### Database
+
+Manage the SQLite3 database with Diesel:
+
+`diesel setup`
+
+`diesel migration generate create_tasks`
+
+define **up.sql**
+
+`CREATE TABLE IF NOT EXISTS geo_provider
+(
+    id INTEGER PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL UNIQUE,
+    description TEXT NOT NULL,
+    api_key TEXT NOT NULL,
+    counter_limit TEXT NOT NULL,
+    counter TEXT NOT NULL,
+    date_time integer not NULL
+);
+`
+
+define **down.sql**
+
+`DROP TABLE geo_provider;`
+
+create **database**
+
+`diesel migration run`
+
+### build release
+
+`cargo build --release``
+
+## Security
+
+the following CORS are defined (in main.rs):
+
+`
+response.set*header(Header::new("Access-Control-Allow-Origin", "*"));
+response.set*header(Header::new("Access-Control-Allow-Methods", "POST, GET, PATCH, OPTIONS", ));
+response.set_header(Header::new("Access-Control-Allow-Headers", "*"));
+response.set_header(Header::new("Access-Control-Allow-Credentials", "true"));
+
+        response.set_header(Header::new("Strict-Transport-Security", "max-age=63072000"));
+
+`
+
+**please be aware of "Strict-Transport-Security"**
 
 ## Screenshots
 
